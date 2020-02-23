@@ -1,5 +1,10 @@
 <template>
   <div>
+    <header>
+      <div class="flex-initial">
+        <font-awesome-icon icon="dollar-sign" style="font-size: 30px" />
+      </div>
+    </header>
     <nuxt />
   </div>
 </template>
