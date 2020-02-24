@@ -1,7 +1,5 @@
 <template>
-  <div>
-    aa
-  </div>
+  <div>リスト</div>
 </template>
 
 <script lang="ts">
