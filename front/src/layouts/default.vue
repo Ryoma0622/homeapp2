@@ -1,13 +1,36 @@
 <template>
   <div>
     <header>
-      <div class="flex-initial">
-        <font-awesome-icon icon="dollar-sign" style="font-size: 30px" />
+      <div class="users">
+        <font-awesome-icon icon="users" style="font-size: 30px" />
+        <b class="ml-2">{{ user }} Family</b>
       </div>
+      <button
+        class="bg-transparent font-semibold hover:text-white px-4 border-solid border-2 rounded"
+      >
+        <font-awesome-icon icon="sign-out-alt" />
+        Logout
+      </button>
     </header>
     <nuxt />
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export type DataType = {
+  user: String
+}
+
+export default Vue.extend({
+  data(): DataType {
+    return {
+      user: '上土井'
+    }
+  }
+})
+</script>
 
 <style>
 html {
@@ -20,6 +43,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  background-color: #f6fff7;
 }
 
 *,
@@ -56,5 +80,19 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+</style>
+
+<style lang="scss" scoped>
+header {
+  @apply flex justify-between py-1;
+  color: #f2f2f2;
+  background-color: #42d392;
+}
+.users {
+  @apply w-56 flex items-center;
+  svg {
+    color: #216144;
+  }
 }
 </style>
