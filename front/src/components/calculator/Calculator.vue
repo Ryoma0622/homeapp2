@@ -1,5 +1,5 @@
 <template>
-  <div class="w-56 border">
+  <div class="w-56">
     <input v-model="price" class="w-full" maxlength="11" />
     <div class="flex">
       <div>
@@ -69,7 +69,7 @@ export default Vue.extend({
 
 <style lang="sass" scoped>
 input
-  @apply text-3xl text-right font-bold text-white bg-gray-700 px-2
+  @apply text-3xl text-right font-bold text-white bg-gray-700 px-2 border
 .row
   @apply flex w-auto
 .clear
