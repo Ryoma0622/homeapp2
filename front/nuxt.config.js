@@ -15,8 +15,6 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   loading: { color: '#fff' },
-  css: ['~/assets/css/tailwind'],
-  plugins: [],
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
@@ -26,6 +24,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
+    '@nuxtjs/tailwindcss',
     'nuxt-fontawesome'
   ],
   axios: {},
