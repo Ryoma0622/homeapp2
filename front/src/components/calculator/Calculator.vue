@@ -1,6 +1,6 @@
 <template>
   <div class="w-56 border">
-    <input class="w-full" v-model="price" maxlength="9" />
+    <input v-model="price" class="w-full" maxlength="11" />
     <div class="flex">
       <div>
         <div class="row">
@@ -39,6 +39,9 @@ export type DataType = {
 }
 
 export default Vue.extend({
+  components: {
+    CalculatorNumButton
+  },
   data(): DataType {
     return {
       price: ''
@@ -50,15 +53,15 @@ export default Vue.extend({
       Vue.nextTick(() => (this.price = result))
     }
   },
-  components: {
-    CalculatorNumButton
-  },
   methods: {
     addNum(num: String) {
-      if (this.price.length === 9) {
+      if (this.price.length === 11) {
         return
       }
-      this.price = this.price + num
+      if (!this.price && num.includes('0')) {
+        return
+      }
+      this.price = this.price.concat(num as string)
     }
   }
 })
