@@ -3,19 +3,9 @@
     <input v-model="price" class="w-full" maxlength="11" />
     <div class="flex">
       <div>
-        <div class="row">
-          <CalculatorNumButton v-for="n in 3" :key="n" :num="String(n)" @addNum="addNum" />
-        </div>
-        <div class="row">
-          <CalculatorNumButton v-for="n in 3" :key="n" :num="String(n + 3)" @addNum="addNum" />
-        </div>
-        <div class="row">
-          <CalculatorNumButton v-for="n in 3" :key="n" :num="String(n + 6)" @addNum="addNum" />
-        </div>
-        <div class="row">
-          <CalculatorNumButton :num="'0'" @addNum="addNum" />
-          <CalculatorNumButton :num="'00'" @addNum="addNum" />
-          <button class="clear" @click="price = ''">C</button>
+        <div v-for="keyRow in keyRows" :key="keyRow[0]" class="row">
+          <CalculatorNumButton v-for="key in keyRow" :key="key" :num="key" @addNum="addNum" />
+          <button v-if="keyRow[0] === '0'" class="clear" @click="price = ''">C</button>
         </div>
       </div>
       <div class="w-full">
@@ -34,8 +24,16 @@
 import Vue from 'vue'
 import CalculatorNumButton from '@/components/calculator/CalculatorNumButton.vue'
 
+const keyRows = [
+  ['1', '2', '3'],
+  ['4', '5', '6'],
+  ['7', '8', '9'],
+  ['0', '00']
+]
+
 export type DataType = {
   price: String
+  keyRows: String[][]
 }
 
 export default Vue.extend({
@@ -44,7 +42,8 @@ export default Vue.extend({
   },
   data(): DataType {
     return {
-      price: ''
+      price: '',
+      keyRows
     }
   },
   watch: {
@@ -72,9 +71,11 @@ input
   @apply text-3xl text-right font-bold text-white bg-gray-700 px-2 border
 .row
   @apply flex w-auto
+.button-base
+  @apply text-gray-700 text-center border font-black text-white
 .clear
-  @apply text-gray-700 text-center bg-orange-500 w-12 h-12 border font-black text-white
+  @apply button-base bg-orange-500 w-12 h-12
 .operation
   button
-    @apply text-gray-700 text-center bg-green-400 w-full h-24 border font-black text-white text-2xl
+    @apply button-base bg-green-400 w-full h-24 border font-black text-white text-2xl
 </style>
