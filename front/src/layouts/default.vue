@@ -50,14 +50,9 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="sass" scoped>
-li
-  .active
-    @apply inline-block border border-blue-500 rounded py-1 px-3 bg-blue-500 text-white
-  .nonactive
-    @apply inline-block border border-white rounded text-blue-500 py-1 px-3
-    &:hover
-      @apply border-gray-200 bg-gray-200
+<style lang="sass">
+body
+  @apply bg-green-100
 </style>
 
 <style>
@@ -70,7 +65,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  background-color: #f6fff7;
 }
 
 *,
@@ -99,4 +93,11 @@ header
   @apply w-56 flex items-center
   svg
     @apply text-green-800
+li
+  .active
+    @apply inline-block border border-blue-500 rounded py-1 px-3 bg-blue-500 text-white
+  .nonactive
+    @apply inline-block border border-white rounded text-blue-500 py-1 px-3
+    &:hover
+      @apply border-gray-200 bg-gray-200
 </style>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>ログイン</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-green-100 h-screen">
+<div class="h-full flex justify-center items-center">
+  <form method="post" th:action="@{'/login'}">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <label class="block text-grey-darker text-sm font-bold mb-2" for="userId">
+          Username
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="userId"
+               type="text" placeholder="UserID" name="userId">
+      </div>
+      <div class="mb-6">
+        <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
+          Password
+        </label>
+        <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
+               id="password" type="password" name="password" placeholder="******************">
+      </div>
+      <div class="flex justify-center">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Sign In
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+</form>
+</body>
+</html>
