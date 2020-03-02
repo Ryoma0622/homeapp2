@@ -1,0 +1,15 @@
+spring:
+  flyway:
+    locations:
+      - classpath:/db/home/migration
+    enabled: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/home
+    username: home
+    password: home
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:/mappers/**/*.xml
