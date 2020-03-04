@@ -1,15 +1,11 @@
-package com.home.expenses;
+package com.home.expenses.security;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
-import lombok.extern.log4j.Log4j2;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Log4j2
 public class LoginAuthenticationFailureHandler implements AuthenticationFailureHandler {
@@ -17,8 +13,7 @@ public class LoginAuthenticationFailureHandler implements AuthenticationFailureH
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest,
                                         HttpServletResponse httpServletResponse,
-                                        AuthenticationException authenticationException)
-            throws IOException, ServletException {
+                                        AuthenticationException authenticationException){
         final String errorMsg = authenticationException.getMessage();
         log.info("認証エラー: {}", errorMsg);
     }

@@ -1,4 +1,4 @@
-package com.home.expenses;
+package com.home.expenses.security;
 
 import org.springframework.security.core.authority.AuthorityUtils;
 

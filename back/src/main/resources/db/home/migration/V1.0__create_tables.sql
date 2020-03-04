@@ -1,4 +1,4 @@
-CREATE TABLE `User`
+CREATE TABLE `user`
 (
     `id`   int(11) NOT NULL AUTO_INCREMENT,
     `user_id` varchar(12) UNIQUE NOT NULL,
@@ -8,4 +8,19 @@ CREATE TABLE `User`
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
-)
+);
+
+CREATE TABLE `user_role`
+(
+    `id`   int(11) NOT NULL AUTO_INCREMENT,
+    `user_id` varchar(12) UNIQUE NOT NULL,
+    `role_id` int(11) NOT NULL ,
+    PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `role`
+(
+    `id`   int(11) NOT NULL,
+    `name` varchar(12) UNIQUE NOT NULL,
+    PRIMARY KEY (`id`)
+);
