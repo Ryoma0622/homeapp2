@@ -55,6 +55,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests().antMatchers("/api/auth/**").permitAll()
             .anyRequest().authenticated();
 
+        http.formLogin()
+            .failureHandler(new LoginAuthenticationFailureHandler())
+            .usernameParameter("userId").passwordParameter("password");
+
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
 

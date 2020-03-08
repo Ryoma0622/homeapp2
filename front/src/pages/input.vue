@@ -1,9 +1,7 @@
 <template>
-  <section>
-    <div class="flex justify-center">
-      <calculator></calculator>
-    </div>
-  </section>
+  <div class="flex justify-center">
+    <calculator></calculator>
+  </div>
 </template>
 
 <script lang="ts">

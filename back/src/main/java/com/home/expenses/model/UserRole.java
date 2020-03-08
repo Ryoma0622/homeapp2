@@ -1,18 +1,18 @@
 package com.home.expenses.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class User implements Serializable {
+@Builder
+public class UserRole implements Serializable {
 
     private int id;
     private String userId;
-    private String password;
-    private String name;
-    private Boolean isDeleted;
+    private int roleId;
     private Date createdAt;
     private Date updatedAt;
 }

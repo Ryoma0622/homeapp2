@@ -17,5 +17,5 @@ mybatis:
 # App Properties
 home:
   app:
-    jwtSecret: bezKoderSecretKey
+    jwtSecret: homeAppSecretKey
     jwtExpirationMs: 86400000
