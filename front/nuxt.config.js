@@ -15,19 +15,12 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   loading: { color: '#fff' },
-  buildModules: [
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/tailwindcss',
-    '@nuxt/typescript-build'
-  ],
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    '@nuxtjs/dotenv',
-    '@nuxtjs/tailwindcss',
-    'nuxt-fontawesome'
-  ],
+  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss', '@nuxt/typescript-build'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/proxy', '@nuxtjs/pwa', '@nuxtjs/dotenv', '@nuxtjs/tailwindcss', 'nuxt-fontawesome'],
   axios: {},
+  proxy: {
+    '/api': 'http://localhost:8080'
+  },
   build: {
     extend(config, ctx) {}
   },

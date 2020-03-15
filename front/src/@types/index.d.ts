@@ -1,4 +1,11 @@
+export interface LoginRequestParam {
+  userId: string
+  password: string
+}
+
 export interface User {
-  firstName: string
-  lastName: string
+  jwt: string
+  username: string
+  password: string
+  roles: string[]
 }

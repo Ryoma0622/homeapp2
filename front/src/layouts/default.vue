@@ -1,11 +1,12 @@
 <template>
   <div>
+    <alert />
     <header>
       <div class="users">
         <font-awesome-icon icon="users" style="font-size: 30px" />
         <b class="ml-2">{{ user }} Family</b>
       </div>
-      <button class="bg-transparent font-semibold hover:text-white px-4 border-solid border-2 rounded">
+      <button class="bg-transparent font-semibold hover:text-white px-4 border-solid border-2 rounded" @click="logoutWrap">
         <font-awesome-icon icon="sign-out-alt" />
         Logout
       </button>
@@ -28,12 +29,18 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapActions } from 'vuex'
+import LocalStorageUtil from '~/utils/LocalStorageUtil'
+import Alert from '~/components/common/Alert.vue'
 
 export type DataType = {
   user: String
 }
 
 export default Vue.extend({
+  components: {
+    Alert
+  },
   data(): DataType {
     return {
       user: '上土井'
@@ -45,6 +52,25 @@ export default Vue.extend({
     },
     isList() {
       return this.$route.path.includes('list')
+    }
+  },
+  watch: {
+    $route() {
+      if (!LocalStorageUtil.getUser()) {
+        this.$router.push('/')
+      }
+    }
+  },
+  created() {
+    if (!LocalStorageUtil.getUser()) {
+      this.$router.push('/')
+    }
+  },
+  methods: {
+    ...mapActions('auth', ['logout']),
+    logoutWrap() {
+      this.logout()
+      this.$router.push('/')
     }
   }
 })

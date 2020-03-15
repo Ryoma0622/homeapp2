@@ -5,6 +5,7 @@ import com.home.expenses.model.response.JwtResponse;
 import com.home.expenses.security.LoginUser;
 import com.home.expenses.security.jwt.JwtUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,8 +27,8 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
 
-    @PostMapping("/signin")
-    public JwtResponse authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    @PostMapping("/login")
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUserId(), loginRequest.getPassword()));
@@ -40,6 +41,6 @@ public class AuthController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList() );
 
-        return new JwtResponse(jwt, loginUser.getUsername(), loginUser.getPassword(), roles);
+        return ResponseEntity.ok(new JwtResponse(jwt, loginUser.getUsername(), loginUser.getPassword(), roles));
     }
 }
